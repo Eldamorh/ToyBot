@@ -1,0 +1,17 @@
+.admin-message-text {
+    font-style: normal;
+    font-size: 22px;
+    color: #004080;
+}
+
+.span {
+     display: inline-block;
+     font-size: 80%;
+     line-height: normal;
+     width: 100%;
+     line-height: 2rem;
+     border: 1px solid #019ed5;
+     border-radius: 25px;
+     cursor: pointer;
+     display: inline-block;
+ }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bot Form</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form th:action="@{/user/home}" method="get">
+    <button class="btn btn-md btn-warning btn-block" type="Submit">Go To User Page</button>
+</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form autocomplete="off" action="#" th:action="@{/user/createBot}"
+                  th:object="${bot}" method="post" class="form-horizontal"
+                  role="form">
+                <h2>Bot Form</h2>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('api_key')}" th:errors="*{api_key}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{api_key}" placeholder="Api Key"
+                               class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('secret_key')}" th:errors="*{secret_key}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{secret_key}" placeholder="Secret Key"
+                               class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{currency}"
+                               placeholder="Currency Name" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="number" th:field="*{upward_trend_threshold}" placeholder="Upward trend threshold"
+                               class="form-control"/> <label
+                            th:if="${#fields.hasErrors('upward_trend_threshold')}" th:errors="*{upward_trend_threshold}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="number" th:field="*{dip_threshold}" placeholder="Dip threshold"
+                               class="form-control"/> <label
+                            th:if="${#fields.hasErrors('dip_threshold')}" th:errors="*{dip_threshold}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="number" th:field="*{profit_threshold}" placeholder="Profit threshold"
+                               class="form-control"/> <label
+                            th:if="${#fields.hasErrors('profit_threshold')}" th:errors="*{profit_threshold}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="number" th:field="*{stop_loss_threshold}" placeholder="Stop loss threshold"
+                               class="form-control"/> <label
+                            th:if="${#fields.hasErrors('stop_loss_threshold')}" th:errors="*{stop_loss_threshold}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="radio" th:field="*{state}" name="optionsRadiosInline1" id="optionsRadiosInline1" value="1"/>Buy
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="radio" th:field="*{state}" name="optionsRadiosInline2" id="optionsRadiosInline2" value="0"/>Sell
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Create Bot</button>
+                    </div>
+                </div>
+
+                <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
